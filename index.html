@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jamshid Farook | Data Analyst</title>
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- THEME TOGGLE -->
+  <button id="theme-toggle" class="theme-toggle">🌙</button>
+
+  <!-- HERO -->
+  <header class="hero">
+    <img src="assets/profile.jpg" alt="Jamshid Farook" class="profile-img">
+    <h1>Jamshid Farook</h1>
+    <h2>Data Analyst</h2>
+    <p class="tagline">Excel | SQL | Python | Power BI | Tableau</p>
+
+    <div class="social-buttons">
+      <a href="https://www.linkedin.com/in/jamshidfarook" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href="https://github.com/jamshidfarook" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="https://www.upwork.com/freelancers/~01f8de83ab025e5c29" target="_blank" rel="noopener noreferrer">Upwork</a>
+    </div>
+  </header>
+
+  <!-- ABOUT ME -->
+  <section class="section about">
+    <h2>About Me</h2>
+    <p>I am a passionate Data Analyst with experience in transforming raw datasets into actionable insights. I specialize in Excel, SQL, Python, Power BI, and Tableau to analyze, visualize, and present data for informed decision-making. My work includes designing dashboards, performing exploratory data analysis, creating predictive models, and automating data workflows to optimize business processes.</p>
+    <p>I hold professional certifications from Google and IBM, demonstrating my commitment to continuous learning and excellence in analytics. My goal is to help organizations leverage data effectively, uncover trends, and make data-driven decisions with confidence.</p>
+    <p>Beyond technical skills, I enjoy solving complex problems, exploring new analytics tools, and applying data science to real-world business challenges. Whether it's cleaning messy datasets, building automated reporting pipelines, or creating compelling visual stories with data, I thrive on turning numbers into insights.</p>
+    <p class="linkedin-resume">Check out my <a href="https://www.linkedin.com/in/jamshidfarook" target="_blank" rel="noopener noreferrer">LinkedIn</a> to know more about my education.</p>
+    <a href="assets/Jamshid_Farook_Resume.pdf" download class="resume-btn">Download My Resume</a>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section class="section certifications">
+    <h2>Data Analyst Certifications</h2>
+    <div class="cert-container">
+      <div class="cert-card">
+        <img src="assets/google-cert.jpg" alt="Google Certificate">
+        <h3>Google Advanced Data Analytics Professional Certificate</h3>
+        <a href="https://www.coursera.org/professional-certificates/google-advanced-data-analytics" target="_blank" rel="noopener noreferrer">Verify Certificate</a>
+      </div>
+      <div class="cert-card">
+        <img src="assets/ibm-cert.jpg" alt="IBM Certificate">
+        <h3>IBM Data Analyst Professional Certificate</h3>
+        <a href="https://www.coursera.org/account/accomplishments/professional-cert/B14OFZNJDHP1" target="_blank" rel="noopener noreferrer">Verify Certificate</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- DATA ANALYTICS PROJECTS -->
+  <section class="section projects">
+    <h2>Data Analytics Projects</h2>
+    <div class="cert-container">
+      <div class="cert-card">
+        <img src="assets/data-project.jpg" alt="Data Analytics Projects">
+        <h3>Data Analytics Projects</h3>
+        <a href="https://github.com/jamshidfarook/data-analytics-projects" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- DATA KUTTAN CHATBOT -->
+  <section class="section certifications">
+    <h2>Also check out Data Kuttan</h2>
+    <div class="cert-container">
+      <div class="cert-card">
+        <img src="assets/data-kuttan.jpg" alt="Data Kuttan Chatbot">
+        <h3>About Data Kuttan</h3>
+        <p>Data Kuttan is a chatbot designed for data analysts. It answers questions related to SQL, Python, Power BI, data visualization, and general analytics problems. Built with Python, Groq console API, and live using Streamlit.</p>
+        <a href="https://datakuttan.streamlit.app/" target="_blank" rel="noopener noreferrer">Chat with Data Kuttan</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>© 2026 Jamshid Farook | Built with GitHub Pages</footer>
+
+  <!-- THEME TOGGLE SCRIPT -->
+  <script>
+    const toggleBtn = document.getElementById("theme-toggle");
+    const body = document.body;
+
+    // Open in light mode by default
+    let savedTheme = localStorage.getItem("theme") || "light";
+    body.classList.toggle("dark", savedTheme === "dark");
+    toggleBtn.textContent = savedTheme === "dark" ? "☀️" : "🌙";
+
+    toggleBtn.addEventListener("click", () => {
+      body.classList.toggle("dark");
+      const newTheme = body.classList.contains("dark") ? "dark" : "light";
+      localStorage.setItem("theme", newTheme);
+      toggleBtn.textContent = newTheme === "dark" ? "☀️" : "🌙";
+    });
+  </script>
+
+</body>
+</html>
