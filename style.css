@@ -96,21 +96,6 @@ body {
 .linkedin-resume { margin-top: 20px; font-weight: 600; }
 .linkedin-resume a { color: var(--accent); text-decoration: underline; }
 
-.resume-btn {
-  display: inline-block;
-  margin-top: 15px;
-  padding: 10px 25px;
-  border-radius: 8px;
-  font-weight: bold;
-  text-decoration: none;
-  color: white;
-  background: linear-gradient(-45deg, #2563eb, #38bdf8, #0f172a, #1e293b);
-  background-size: 400% 400%;
-  animation: buttonGradient 8s ease infinite;
-  transition: transform 0.3s ease;
-}
-.resume-btn:hover { transform: translateY(-3px); }
-
 /* CARDS */
 .cert-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; }
 .cert-card {
