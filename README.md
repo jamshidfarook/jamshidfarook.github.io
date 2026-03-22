@@ -1,6 +1,3 @@
-Readme · MD
-Copy
-
 # Jamshid Farook | Portfolio
  
 Personal portfolio website of Jamshid Farook — Data Analyst specialising in Power BI, SQL, Python, Excel, and Tableau.
