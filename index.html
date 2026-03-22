@@ -708,7 +708,6 @@ document.addEventListener('click', e => {
     .nav-burger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
 
     .nav-drawer{
-      display:none;
       position:fixed;top:56px;left:0;right:0;
       background:rgba(5,5,9,0.97);
       backdrop-filter:blur(20px);
@@ -716,10 +715,18 @@ document.addEventListener('click', e => {
       border-bottom:1px solid rgba(255,255,255,0.06);
       z-index:199;
       padding:1rem 0;
-      transform:translateY(-10px);opacity:0;
-      transition:transform 0.25s ease,opacity 0.25s ease;
+      transform:translateY(-10px);
+      opacity:0;
+      pointer-events:none;
+      visibility:hidden;
+      transition:transform 0.25s ease,opacity 0.25s ease,visibility 0.25s;
     }
-    .nav-drawer.open{transform:translateY(0);opacity:1}
+    .nav-drawer.open{
+      transform:translateY(0);
+      opacity:1;
+      pointer-events:auto;
+      visibility:visible;
+    }
     .nav-drawer-links{list-style:none;padding:0}
     .nav-drawer-links li a{
       display:block;
