@@ -59,7 +59,23 @@
       }
     ]
   }
-  </script>
+  
+function toggleMenu(btn) {
+  const drawer = document.getElementById('nav-drawer');
+  const open = drawer.classList.toggle('open');
+  btn.classList.toggle('open', open);
+  btn.setAttribute('aria-expanded', open);
+}
+function closeMenu() {
+  document.getElementById('nav-drawer').classList.remove('open');
+  document.querySelector('.nav-burger').classList.remove('open');
+}
+// Close drawer on outside click
+document.addEventListener('click', e => {
+  const drawer = document.getElementById('nav-drawer');
+  if (drawer.classList.contains('open') && !e.target.closest('nav')) closeMenu();
+});
+</script>
 
   <link rel="icon" type="image/png" href="data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAAgACADASIAAhEBAxEB/8QAGgAAAgIDAAAAAAAAAAAAAAAABAYCBQMHCP/EAC0QAAIBAwMBBwIHAAAAAAAAAAECAwQFEQASITEGBxMiUWFxFEEVIzJCkaHw/8QAFwEAAwEAAAAAAAAAAAAAAAAAAQIDBP/EABwRAAIDAQEBAQAAAAAAAAAAAAECAAMSEQQTIf/aAAwDAQACEQMRAD8A5/uRSorhNvp4rZUBaqVmQHYx8rIp6kkjGBx9zgDIDuNlqBfLl+G0c8kdMhqFSljaRY4sg7ieTswepJ+dRn8eqsZpNkimhkaYD7YOA3HtjP8AOn3upvVZa6dfobvazHXwNFUw1VO6FfDJ2xCXby2GZwAcAEA+mswA5qT89W3CmauY0Lqu0sqtzweV9iNC1EXguwDiRc+QgYyPfTN3g9kaq21FZd4jGlC0vkwT+okeUcDnnpxwNLcMMzxIzjbgYHqfjTNhl6se6o1nhllSV89TcZLiN3iAuzIFyjFuGDc8KckH5A0dL2luKo8VVJHIpKBcRDyIgCgLjAAAUdByRnOqituVTUy7pWRYlGIkiQIqDIOABrDIdykbMt0A68atXWCv7AhKnQjh2urKKWwRE1zVVQ0qSxo45XjBJHQcf3jVDQSxTRBFdY5Sc/mHAY+5/wANAXi4m41MdU8Sx7aeKLA/cyoqlvkkFj86CEh9fc6C+dcZMe9/q3Z//9k="/>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Space+Grotesk:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
@@ -554,19 +570,76 @@
     }
 
     /* ── RESPONSIVE ── */
+    /* ── TABLET (≤900px) ── */
     @media(max-width:900px){
-      .hero-grid{grid-template-columns:1fr;gap:3rem}
+      .hero-grid{grid-template-columns:1fr;gap:3rem;text-align:center}
       .hero-photo-col{order:-1}
       .photo-frame{width:200px;height:200px}
+      .eyebrow,.cta-row,.socials{justify-content:center}
+      .hero-bio{margin-left:auto;margin-right:auto}
       .about-grid{grid-template-columns:1fr;gap:2.5rem}
       nav{padding:0 1.5rem}
       .nav-links{display:none}
       section{padding:5rem 1.5rem}
+      .proj-grid{grid-template-columns:1fr 1fr}
+      .certs-grid{grid-template-columns:1fr 1fr}
     }
+
+    /* ── MOBILE (≤600px) ── */
     @media(max-width:600px){
-      h1{font-size:2.6rem}
-      .about-highlights{grid-template-columns:1fr 1fr}
-      footer{flex-direction:column;gap:0.5rem;text-align:center}
+      /* typography */
+      h1{font-size:2.4rem}
+      h2{font-size:1.8rem}
+
+      /* hero */
+      #hero{padding:6rem 1.2rem 3rem}
+      .hero-grid{gap:2rem}
+      .photo-frame{width:160px;height:160px}
+      .cta-row{flex-direction:column;align-items:center}
+      .cta-row .btn{width:100%;justify-content:center;padding:1rem}
+      .socials{flex-wrap:wrap;justify-content:center;gap:0.6rem}
+
+      /* nav */
+      nav{padding:0 1.2rem;height:56px}
+      .nav-logo{font-size:1.1rem}
+
+      /* sections */
+      section{padding:4rem 1.2rem}
+      #about{padding:4rem 1.2rem}
+
+      /* about highlights */
+      .about-highlights{grid-template-columns:1fr 1fr;gap:0.7rem}
+      .hl-card{padding:1rem 0.8rem}
+      .hl-num{font-size:1.3rem}
+
+      /* skills */
+      .skills-wrap{grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:0.7rem}
+      .sk{padding:1rem 0.7rem}
+      .sk-icon{font-size:1.6rem}
+
+      /* projects — single column on mobile */
+      .proj-grid{grid-template-columns:1fr;gap:1.2rem}
+      .proj-thumb-wrap{height:160px}
+
+      /* certs — single column */
+      .certs-grid{grid-template-columns:1fr;gap:1rem}
+
+      /* contact */
+      #contact{padding:5rem 1.2rem}
+      .contact-card{padding:2rem 1.4rem;border-radius:16px}
+      .contact-heading{font-size:1.6rem}
+      .contact-btns{flex-direction:column;align-items:stretch}
+      .contact-btns .btn{width:100%;justify-content:center;padding:1rem}
+
+      /* footer */
+      footer{flex-direction:column;gap:0.5rem;text-align:center;padding:1.5rem}
+    }
+
+    /* ── SMALL MOBILE (≤380px) ── */
+    @media(max-width:380px){
+      h1{font-size:2rem}
+      .about-highlights{grid-template-columns:1fr}
+      .skills-wrap{grid-template-columns:repeat(3,1fr)}
     }
 
     /* ── WEBKIT COMPAT (already handled inline by python, keeping class patches) ── */
@@ -582,6 +655,56 @@
     .btn-explore { font-size: 0.72rem; margin-top: 0.5rem; }
     .h2-gold-italic { color: var(--gold-lt); font-style: italic; }
     .about-link-wrap { margin-top: 1rem; }
+
+    /* ── HAMBURGER MENU ── */
+    .nav-burger{
+      display:none;
+      flex-direction:column;justify-content:center;align-items:center;
+      gap:5px;
+      width:40px;height:40px;
+      background:transparent;border:1px solid rgba(255,255,255,0.1);
+      border-radius:8px;cursor:pointer;padding:0;
+      transition:border-color 0.2s;
+    }
+    .nav-burger span{
+      display:block;width:18px;height:1.5px;
+      background:var(--text);border-radius:2px;
+      transition:all 0.3s;
+    }
+    .nav-burger:hover{border-color:var(--gold)}
+    .nav-burger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+    .nav-burger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+    .nav-burger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+
+    .nav-drawer{
+      display:none;
+      position:fixed;top:56px;left:0;right:0;
+      background:rgba(5,5,9,0.97);
+      backdrop-filter:blur(20px);
+      -webkit-backdrop-filter:blur(20px);
+      border-bottom:1px solid rgba(255,255,255,0.06);
+      z-index:199;
+      padding:1rem 0;
+      transform:translateY(-10px);opacity:0;
+      transition:transform 0.25s ease,opacity 0.25s ease;
+    }
+    .nav-drawer.open{transform:translateY(0);opacity:1}
+    .nav-drawer-links{list-style:none;padding:0}
+    .nav-drawer-links li a{
+      display:block;
+      padding:0.9rem 2rem;
+      font-family:'Space Mono',monospace;
+      font-size:0.78rem;letter-spacing:0.14em;text-transform:uppercase;
+      color:var(--muted);text-decoration:none;
+      border-bottom:1px solid rgba(255,255,255,0.04);
+      transition:color 0.2s,padding-left 0.2s;
+    }
+    .nav-drawer-links li a:hover{color:var(--gold-lt);padding-left:2.4rem}
+
+    @media(max-width:900px){
+      .nav-burger{display:flex}
+      .nav-drawer{display:block}
+    }
   </style>
 </head>
 <body>
@@ -598,7 +721,19 @@
     <li><a href="#certifications">Certs</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-</nav>
+  <button class="nav-burger" aria-label="Toggle menu" aria-expanded="false" onclick="toggleMenu(this)">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-drawer" id="nav-drawer">
+      <ul class="nav-drawer-links">
+        <li><a href="#about" onclick="closeMenu()">About</a></li>
+        <li><a href="#skills" onclick="closeMenu()">Skills</a></li>
+        <li><a href="#projects" onclick="closeMenu()">Projects</a></li>
+        <li><a href="#certifications" onclick="closeMenu()">Certs</a></li>
+        <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
 
 <main id="main-content">
 <!-- HERO -->
@@ -863,6 +998,22 @@ function tick() {
   requestAnimationFrame(tick);
 }
 tick();
+
+function toggleMenu(btn) {
+  const drawer = document.getElementById('nav-drawer');
+  const open = drawer.classList.toggle('open');
+  btn.classList.toggle('open', open);
+  btn.setAttribute('aria-expanded', open);
+}
+function closeMenu() {
+  document.getElementById('nav-drawer').classList.remove('open');
+  document.querySelector('.nav-burger').classList.remove('open');
+}
+// Close drawer on outside click
+document.addEventListener('click', e => {
+  const drawer = document.getElementById('nav-drawer');
+  if (drawer.classList.contains('open') && !e.target.closest('nav')) closeMenu();
+});
 </script>
 </body>
 </html>
